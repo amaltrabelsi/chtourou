@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CHTOUROU Auto Gaz – Installation & Service GPL Professionnel</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("R6GOnBiqZ1SyrNpSI"); // Remplacez par votre clé publique
+    })();
+  </script>
+
+  <style>
+    :root{
+      --primary:#00AEEF;   /* Bleu clair (logo) */
+      --dark:#0F2239;      /* Bleu marine foncé */
+      --accent:#F15A29;    /* Orange flamme */
+      --bg:#F5F7FA;        /* Gris très clair */
+      --white:#FFFFFF;
+      --text:#0B1526;      /* Texte principal */
+      --radius:14px;
+      --shadow:0 10px 30px rgba(15,34,57,.08);
+      --shadow-lg:0 20px 50px rgba(15,34,57,.15);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* RESET + BASE */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1200px,92%);margin-inline:auto}
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.85rem 1.8rem;border-radius:999px;font-weight:600;
+      transition:var(--transition);
+      border:2px solid transparent;
+      font-size:0.95rem;
+    }
+    .btn-primary{background:var(--accent);color:var(--white);box-shadow:var(--shadow)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(241,90,41,.25);background:#e04a1a}
+    .btn-outline{background:transparent;border-color:var(--white);color:var(--white)}
+    .btn-outline:hover{background:var(--white);color:var(--dark)}
+    .btn-secondary{background:var(--white);border:2px solid var(--primary);color:var(--dark)}
+    .btn-secondary:hover{background:var(--primary);color:var(--white)}
+
+    /* HEADER */
+    .header{
+      position:sticky;top:0;z-index:100;background:var(--white);
+      box-shadow:0 6px 18px rgba(15,34,57,.06);
+      backdrop-filter: blur(10px);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0;
+    }
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .brand img{width:50px;height:50px;object-fit:contain;border-radius:10px}
+    .brand b{font-family:Montserrat, sans-serif;font-size:1.25rem;color:var(--dark);letter-spacing:.5px}
+    .menu{display:flex;gap:1.8rem;align-items:center}
+    .menu a{color:var(--dark);font-weight:600;position:relative;padding:.3rem 0;font-size:0.95rem}
+    .menu a:after{
+      content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+      background:var(--accent);transition:width .3s ease;
+    }
+    .menu a:hover:after{width:100%}
+    .nav-cta{display:flex;gap:.6rem;align-items:center}
+
+    /* HERO */
+    .hero{
+      position:relative;isolation:isolate;
+      background:
+        radial-gradient(1200px 400px at 80% 0%, rgba(0,174,239,.12), transparent 60%),
+        radial-gradient(900px 300px at 10% 10%, rgba(241,90,41,.10), transparent 55%),
+        linear-gradient(180deg,#fff, #f7f9fc 60%, #f2f6fb);
+      padding:clamp(4rem, 8vw, 8rem) 0;
+      overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+    .hero h1{
+      font-family:Montserrat, sans-serif;
+      font-size:clamp(2rem, 4vw, 3.5rem);
+      line-height:1.15;margin:.2rem 0 1.5rem;color:var(--dark);
+      font-weight: 800;
+    }
+    .hero p{font-size:1.15rem;max-width:52ch;color:#2a3a55;margin-bottom: 1.5rem;}
+    .badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 1.8rem}
+    .badge{
+      background:var(--white);border:1px solid #e7edf5;padding:.5rem 1rem;border-radius:999px;
+      font-size:.85rem;font-weight:600;color:var(--dark);box-shadow: var(--shadow);
+    }
+    .hero-card{
+      background:var(--white);border-radius:22px;padding:1.8rem;border:1px solid #ecf1f7;box-shadow:var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .hero-visual{
+      aspect-ratio:4/3;border-radius:18px;overflow:hidden;
+      background:
+        conic-gradient(from 210deg at 70% 30%, rgba(0,174,239,.25), transparent 40%),
+        linear-gradient(145deg,#0F2239 0%, #143155 35%, #0F2239 100%);
+      display:grid;place-items:center;position:relative;
+      box-shadow: 0 15px 40px rgba(15,34,57,.2);
+    }
+    .car-icon{
+      width:86%;max-width:540px;opacity:.9;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))
+    }
+    .hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+    .kpi{
+      background:#0f2239; color:#e9f6ff;border-radius:14px;padding:18px;text-align:center;border:1px solid rgba(255,255,255,.08);
+      transition: var(--transition);
+    }
+    .kpi:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(15,34,57,.3);
+    }
+    .kpi b{display:block;font-family:Montserrat, sans-serif;font-size:1.5rem;color:#fff;margin-bottom: 5px;}
+    .kpi span{font-size:.85rem;opacity:.85}
+
+    /* SECTIONS */
+    section{padding:clamp(3.5rem, 7vw, 6rem) 0}
+    .section-head{margin-bottom:3rem;text-align:center}
+    .section-head h2{
+      font-family:Montserrat, sans-serif;color:var(--dark);font-size:clamp(1.6rem, 3vw, 2.5rem);margin:.2rem 0 1rem;
+      font-weight: 800;
+    }
+    .section-head p{color:#3a4a68;margin:0 auto;max-width:60ch;font-size: 1.1rem;}
+
+    /* SERVICES */
+    .grid{display:grid;gap:1.8rem}
+    @media(min-width:780px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    .card{
+      background:var(--white);border:1px solid #e9eff6;border-radius:var(--radius);padding:2rem;
+      box-shadow:var(--shadow);transition:var(--transition);
+      position:relative;
+      height: 100%;
+    }
+    .card:before{
+      content:'';position:absolute;top:0;left:0;width:100%;height:4px;
+      background:linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius:var(--radius) var(--radius) 0 0;
+    }
+    .card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(15,34,57,.15)}
+    .icon{
+      width:60px;height:60px;border-radius:16px;display:grid;place-items:center;margin-bottom:1.2rem;
+      background:linear-gradient(135deg, var(--primary), #45cfff);
+      color:#fff;font-size:1.5rem;
+      box-shadow: 0 8px 20px rgba(0,174,239,.3);
+    }
+    .card h3{margin:.3rem 0 .8rem;font-family:Montserrat, sans-serif;color:var(--dark);font-size:1.3rem;font-weight: 700;}
+    .card p{margin:0;color:#42516b;font-size: 1rem;}
+
+    /* ABOUT */
+    .about{background:linear-gradient(180deg,#fff, #f8fbff)}
+    .about .wrap{display:grid;gap:2.5rem}
+    @media(min-width:920px){ .about .wrap{grid-template-columns:1fr 1.1fr;align-items:center} }
+    .about .pill{display:inline-block;background:#E6F7FE;border:1px solid #caeffd;color:#056a85;
+      font-weight:700;border-radius:999px;padding:.5rem 1.2rem;font-size:.85rem;margin-bottom:1rem}
+    .list{display:grid;gap:.8rem;margin:1.2rem 0}
+    .list li{display:flex;gap:.8rem;align-items:flex-start;font-size: 1.05rem;}
+    .list i{color:var(--accent);margin-top:.2rem;font-size: 1.2rem;}
+
+    /* TESTIMONIALS */
+    .testimonials{background:var(--white)}
+    .quote{
+      background:#0F2239;color:#e7f2ff;border-radius:18px;padding:1.8rem;border:1px solid rgba(255,255,255,.08);
+      position:relative;
+      height: 100%;
+      transition: var(--transition);
+    }
+    .quote:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(15,34,57,.3);
+    }
+    .quote:before{
+      content:'"';position:absolute;top:-15px;left:20px;font-size:5rem;color:rgba(255,255,255,.1);
+      font-family:Georgia, serif;line-height:1;
+    }
+    .quote p{margin:0 0 1rem;font-size: 1.05rem;line-height: 1.7;}
+    .quote b{color:#fff;font-size: 1rem;}
+
+    /* CONTACT */
+    .contact{background:linear-gradient(180deg,#f8fbff, #eef5fb)}
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* MAP STYLING */
+    .map-container {
+      height: 400px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .map-placeholder {
+      height: 100%;
+      background: linear-gradient(135deg, #0F2239, #143155);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .map-placeholder i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .map-placeholder h3 {
+      margin: 0 0 1rem;
+      font-family: Montserrat, sans-serif;
+    }
+    
+    /* CONTACT INFO STYLING */
+    .contact-info {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), #45cfff);
+      color: white;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .contact-details h4 {
+      margin: 0 0 0.5rem;
+      font-family: Montserrat, sans-serif;
+      color: var(--dark);
+    }
+    .contact-details p {
+      margin: 0;
+      color: #42516b;
+    }
+    
+    /* MESSENGER CHAT WIDGET - MODIFICATIONS */
+    .messenger-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 100;
+      font-family: Roboto, sans-serif;
+    }
+    
+    .messenger-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #45cfff);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0,174,239,.4);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+    }
+    
+    .messenger-button.pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0,174,239,.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(0,174,239,0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0,174,239,0);
+      }
+    }
+    
+    .messenger-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0,174,239,.5);
+    }
+    
+    .messenger-chat {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      width: 400px;
+      height: 500px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(15,34,57,.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #e9eff6;
+    }
+    
+    .messenger-chat.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), #45cfff);
+      color: white;
+      flex-shrink: 0;
+    }
+    
+    .chat-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    
+    .chat-info h3 {
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      font-size: 1rem;
+    }
+    
+    .chat-info p {
+      margin: 0;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+    
+    .close-chat {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+    
+    .close-chat:hover {
+      opacity: 1;
+    }
+    
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #f8fbff;
+      overflow-y: auto;
+    }
+    
+    .message {
+      max-width: 80%;
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    
+    .message.bot {
+      align-self: flex-start;
+      background: white;
+      border-bottom-left-radius: 5px;
+      box-shadow: 0 2px 8px rgba(15,34,57,.08);
+    }
+    
+    .message.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--primary), #45cfff);
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+    
+    /* FORM STYLING IN CHAT - MODIFICATIONS */
+    .chat-form {
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid #e9eff6;
+      flex-shrink: 0;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.85rem;
+      font-family: Montserrat, sans-serif;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: 1px solid #dae3ee;
+      background: #fbfdff;
+      outline: none;
+      transition: var(--transition);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(0,174,239,.2);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .form-submit:hover {
+      background: #e04a1a;
+      transform: translateY(-2px);
+    }
+    
+    .form-submit:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* NOTIFICATIONS */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transform: translateX(150%);
+      transition: transform 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .notification.success {
+      background-color: #28a745;
+      transform: translateX(0);
+    }
+    .notification.error {
+      background-color: #dc3545;
+      transform: translateX(0);
+    }
+    
+    /* FOOTER */
+    .footer {
+      background: var(--dark);
+      color: #c9d7ee;
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .footer-logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+    }
+    .footer-logo b {
+      font-family: Montserrat, sans-serif;
+      font-size: 1.25rem;
+      color: white;
+    }
+    .footer-about p {
+      margin: 0 0 1.5rem;
+      line-height: 1.7;
+    }
+    .footer-links h4, .footer-services h4, .footer-contact h4 {
+      color: white;
+      font-family: Montserrat, sans-serif;
+      margin: 0 0 1.5rem;
+      font-size: 1.1rem;
+    }
+    .footer-links ul, .footer-services ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li, .footer-services li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-links a, .footer-services a {
+      color: #c9d7ee;
+      transition: var(--transition);
+    }
+    .footer-links a:hover, .footer-services a:hover {
+      color: var(--primary);
+    }
+    .footer-contact p {
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .footer-contact i {
+      color: var(--primary);
+      width: 20px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom small {
+      opacity: 0.8;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.8s ease forwards; }
+
+    /* CAR ELEMENTS */
+    .car-dashboard {
+      position:absolute;bottom:0;left:0;width:100%;height:30px;
+      background:linear-gradient(90deg, #2a3a55, #3a4a68);border-radius:0 0 18px 18px;
+    }
+    .car-dashboard:before {
+      content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+      width:60%;height:4px;background:rgba(255,255,255,.2);border-radius:2px;
+    }
+    .car-dashboard:after {
+      content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+      width:40%;height:4px;background:var(--accent);border-radius:2px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .menu {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hero {
+        padding: 3rem 0;
+      }
+      section {
+        padding: 2.5rem 0;
+      }
+      .messenger-widget {
+        bottom: 20px;
+        right: 20px;
+      }
+      .messenger-chat {
+        width: 320px;
+        height: 520px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <img src="assets/logo.png" alt="CHTOUROU Auto Gaz">
+        <b>CHTOUROU Auto Gaz</b>
+      </a>
+
+      <nav class="menu">
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
+        <a href="#temoignages">Témoignages</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary open-chat-btn" href="#">
+          <i class="bi bi-telephone"></i> Demander un devis
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="fade-in">
+        <span class="pill">Experts GPL & Auto Gaz</span>
+        <h1>Installation, conversion et entretien GPL professionnels</h1>
+        <p>
+          Nous accompagnons particuliers et flottes pour la conversion au gaz, l'entretien complet et les contrôles de sécurité.
+          Des interventions rapides, garanties et conformes aux normes.
+        </p>
+        <div class="badges">
+          <span class="badge"><i class="bi bi-shield-check"></i>&nbsp; Garantie service</span>
+          <span class="badge"><i class="bi bi-speedometer2"></i>&nbsp; Performance optimisée</span>
+          <span class="badge"><i class="bi bi-fuel-pump"></i>&nbsp; Économie Carburant</span>
+        </div>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <a class="btn btn-primary open-chat-btn" href="#">Prendre rendez-vous</a>
+          <a class="btn btn-secondary" href="#services">Découvrir nos services</a>
+        </div>
+      </div>
+
+      <div class="hero-card fade-in" style="animation-delay: 0.2s">
+        <div class="hero-visual">
+          <!-- Visuel automobile -->
+			        <img src="assets/voiture.jpg" >
+
+			
+          <div class="car-dashboard"></div>
+        </div>
+
+        <div class="hero-kpis">
+          <div class="kpi"><b>10+ ans</b><span>d'expertise</span></div>
+          <div class="kpi"><b>1000+</b><span>clients servis</span></div>
+          <div class="kpi"><b>24h</b><span>rdv rapide</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Nos services</h2>
+        <p>Une offre complète pour rouler au gaz en toute sérénité : conversion, contrôle, maintenance et pièces.</p>
+      </div>
+
+      <div class="grid cols-3">
+        <article class="card fade-in">
+          <div class="icon"><i class="fas fa-wrench"></i></div>
+          <h3>Conversion GPL</h3>
+          <p>Étude de compatibilité, pose du kit homologué, calibrations & tests sur route. Dossier de conformité inclus.</p>
+        </article>
+
+        <article class="card fade-in" style="animation-delay: 0.1s">
+          <div class="icon" style="background:linear-gradient(135deg,var(--accent),#ff8a57)"><i class="fas fa-shield-alt"></i></div>
+          <h3>Contrôles & sécurité</h3>
+          <p>Contrôle d'étanchéité, soupapes, réservoir et lignes gaz. Rapport de sécurité détaillé.</p>
+        </article>
+
+        <article class="card fade-in" style="animation-delay: 0.2s">
+          <div class="icon" style="background:linear-gradient(135deg,#0F2239,#385a8f)"><i class="fas fa-cogs"></i></div>
+          <h3>Maintenance & pièces</h3>
+          <p>Entretien périodique, remplacement d'injecteurs, filtres GPL et électronique. Pièces d'origine.</p>
+        </article>
+
+        <article class="card fade-in" style="animation-delay: 0.3s">
+          <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+          <h3>Optimisation & réglages</h3>
+          <p>Cartographies fines pour performance régulière et consommation réduite, selon les normes constructeur.</p>
+        </article>
+
+        <article class="card fade-in" style="animation-delay: 0.4s">
+          <div class="icon" style="background:linear-gradient(135deg,var(--primary),#38c7ff)"><i class="fas fa-truck"></i></div>
+          <h3>Flottes & pros</h3>
+          <p>Forfaits flotte, planification d'interventions et suivi régulier. Contrats de maintenance.</p>
+        </article>
+
+        <article class="card fade-in" style="animation-delay: 0.5s">
+          <div class="icon" style="background:linear-gradient(135deg,var(--accent),#ff8a57)"><i class="fas fa-headset"></i></div>
+          <h3>Assistance & conseils</h3>
+          <p>Accompagnement administratif, conseils d'utilisation et bonnes pratiques de sécurité.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container wrap">
+      <div class="fade-in">
+        <span class="pill">À propos</span>
+        <h2>Qualité, sécurité et expertise au cœur de notre métier</h2>
+        <p>
+          CHTOUROU Auto Gaz est une entreprise spécialisée dans l'installation et l'entretien de systèmes GPL.
+          Notre équipe certifiée garantit des interventions propres, durables et conformes aux standards les plus stricts.
+        </p>
+        <ul class="list">
+          <li><i class="bi bi-check2-circle"></i>Techniciens certifiés & matériel homologué</li>
+          <li><i class="bi bi-check2-circle"></i>Procédures de sécurité rigoureuses</li>
+          <li><i class="bi bi-check2-circle"></i>Support client réactif et suivi après-vente</li>
+        </ul>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem">
+          <a class="btn btn-primary open-chat-btn" href="#"><i class="bi bi-calendar2-check"></i> Réserver une visite</a>
+          <a class="btn btn-secondary" href="#services"><i class="bi bi-journal-text"></i> Voir les prestations</a>
+        </div>
+      </div>
+
+      <div class="grid fade-in" style="animation-delay: 0.2s">
+        <div class="card" style="display:flex;gap:.8rem;align-items:center">
+          <div class="icon"><i class="fas fa-bolt"></i></div>
+          <div><b style="display:block;color:var(--dark);font-family:Montserrat">Interventions rapides</b>
+            <span>Disponibilités sous 24–48h selon la charge atelier.</span></div>
+        </div>
+        <div class="card" style="display:flex;gap:.8rem;align-items:center">
+          <div class="icon" style="background:linear-gradient(135deg,var(--accent),#ff8a57)"><i class="fas fa-award"></i></div>
+          <div><b style="display:block;color:var(--dark);font-family:Montserrat">Garantie & conformité</b>
+            <span>Documentation complète et conformité aux normes en vigueur.</span></div>
+        </div>
+        <div class="card" style="display:flex;gap:.8rem;align-items:center">
+          <div class="icon" style="background:linear-gradient(135deg,#0F2239,#385a8f)"><i class="fas fa-users"></i></div>
+          <div><b style="display:block;color:var(--dark);font-family:Montserrat">Conseil personnalisé</b>
+            <span>Diagnostic et recommandations adaptés à votre usage.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact & Devis</h2>
+        <p>Notre équipe est à votre disposition pour répondre à toutes vos questions.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div class="contact-details">
+                <h4>Téléphone</h4>
+                <p>+216 XX XXX XXX</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" style="background:linear-gradient(135deg,var(--accent),#ff8a57)"><i class="fas fa-envelope"></i></div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <p>contact@chtourou-autogaz.tn</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon" style="background:linear-gradient(135deg,#0F2239,#385a8f)"><i class="fas fa-clock"></i></div>
+              <div class="contact-details">
+                <h4>Horaires</h4>
+                <p>Lun - Sam: 8h - 18h</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-details">
+                <h4>Adresse</h4>
+                <p>Ariana, Tunisie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in" style="animation-delay: 0.1s">
+          <div class="map-container">
+            <div class="map-placeholder">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Notre emplacement</h3>
+              <p>Ariana, Tunisie</p>
+              <p>À proximité des principales artères</p>
+              <small>Cliquez pour voir sur Google Maps</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSENGER CHAT WIDGET AVEC FORMULAIRE AMÉLIORÉ -->
+  <div class="messenger-widget">
+    <button class="messenger-button pulse" id="messengerButton">
+      <i class="fas fa-comment-alt"></i>
+    </button>
+    
+    <div class="messenger-chat" id="messengerChat">
+      <div class="chat-header">
+        <div class="chat-avatar">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="chat-info">
+          <h3>Conseiller CHTOUROU</h3>
+          <p>En ligne - Réponse immédiate</p>
+        </div>
+        <button class="close-chat" id="closeChat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+     
+      
+      <div class="chat-form" id="chatForm">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Nom complet *</label>
+              <input type="text" class="form-input" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" class="form-input" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">Téléphone</label>
+              <input type="tel" class="form-input" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="service">Type de service *</label>
+              <select class="form-select" id="service" name="service" required>
+                <option value="" disabled selected>Sélectionnez un service</option>
+                <option value="Conversion GPL">Conversion GPL</option>
+                <option value="Contrôle & sécurité">Contrôle & sécurité</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Optimisation & réglages">Optimisation & réglages</option>
+                <option value="Flottes & pros">Flottes & pros</option>
+                <option value="Conseil / Devis">Conseil / Devis</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Votre message *</label>
+            <textarea class="form-textarea" id="message" name="message" required placeholder="Décrivez votre demande..."></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit" id="submitButton">
+            <i class="fas fa-paper-plane"></i> Envoyer la demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <img src="assets/logo.png" alt="CHTOUROU Auto Gaz">
+            <b>CHTOUROU Auto Gaz</b>
+          </div>
+          <p>Experts en installation et entretien de systèmes GPL depuis plus de 10 ans. Nous garantissons des interventions rapides, sécurisées et conformes aux normes en vigueur.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="#services">Nos services</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-services">
+          <h4>Nos services</h4>
+          <ul>
+            <li><a href="#">Conversion GPL</a></li>
+            <li><a href="#">Contrôles & sécurité</a></li>
+            <li><a href="#">Maintenance & pièces</a></li>
+            <li><a href="#">Optimisation</a></li>
+            <li><a href="#">Flottes & pros</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Ariana, Tunisie</p>
+          <p><i class="fas fa-phone"></i> +216 XX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> contact@chtourou-autogaz.tn</p>
+          <p><i class="fas fa-clock"></i> Lun - Sam: 8h - 18h</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <small>&copy; <span id="currentYear"></span> CHTOUROU Auto Gaz. Tous droits réservés.</small>
+        <small>Conçu avec <i class="fas fa-heart" style="color: var(--accent);"></i> par A3I</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Scroll doux pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Animation au défilement
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+
+    // Gestion du chat Messenger
+    const messengerButton = document.getElementById('messengerButton');
+    const messengerChat = document.getElementById('messengerChat');
+    const closeChat = document.getElementById('closeChat');
+    const chatForm = document.getElementById('chatForm');
+
+    // Fonction pour afficher un message du bot
+    function addBotMessage(message) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message bot';
+      messageDiv.innerHTML = `<p>${message}</p>`;
+     
+    }
+
+    // Fonction pour afficher le formulaire
+    function showForm() {
+      chatForm.style.display = 'block';
+    }
+
+    // Fonction pour ouvrir le chat
+    function openChat() {
+      messengerChat.classList.add('active');
+      // Arrêter l'animation de pulsation quand le chat est ouvert
+      messengerButton.classList.remove('pulse');
+      
+    
+      
+      // Afficher le formulaire directement
+      showForm();
+    }
+
+    // Fonction pour fermer le chat
+    function closeChatFunc() {
+      messengerChat.classList.remove('active');
+      // Redémarrer l'animation de pulsation quand le chat est fermé
+      setTimeout(() => {
+        if (!messengerChat.classList.contains('active')) {
+          messengerButton.classList.add('pulse');
+        }
+      }, 300);
+      
+      // Réinitialiser le chat
+      setTimeout(() => {
+        chatForm.style.display = 'none';
+      }, 500);
+    }
+
+    // Ouvrir/fermer le chat via le bouton flottant
+    messengerButton.addEventListener('click', function() {
+      if (messengerChat.classList.contains('active')) {
+        closeChatFunc();
+      } else {
+        openChat();
+      }
+    });
+    
+    closeChat.addEventListener('click', closeChatFunc);
+
+    // Ouvrir le chat via les boutons "Demander un devis" et "Prendre rendez-vous"
+    document.querySelectorAll('.open-chat-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openChat();
+      });
+    });
+
+    // Fonction pour afficher les notifications
+    function showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.remove();
+      }, 5000);
+    }
+
+    // Gestion de la soumission du formulaire
+    const contactForm = document.getElementById('contactForm');
+    const submitButton = document.getElementById('submitButton');
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Récupération des données du formulaire
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Désactiver le bouton pendant l'envoi
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+      
+      try {
+        // Envoi de l'email via EmailJS
+        await emailjs.send('service_fk8l4ii', 'template_ichgha1', {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message
+        });
+        
+        // Afficher notification de succès
+        showNotification('Votre demande a été envoyée avec succès! Nous vous répondrons dans les plus brefs délais.', 'success');
+        
+        // Réinitialiser le formulaire
+        contactForm.reset();
+        
+        // Ajouter un message de confirmation
+        addBotMessage('Merci ! Votre demande a été envoyée avec succès. Nous vous contacterons rapidement.');
+        
+        // Fermer le chat après envoi réussi
+        setTimeout(() => {
+          closeChatFunc();
+        }, 3000);
+        
+      } catch (error) {
+        // Afficher notification d'erreur
+        showNotification('Erreur lors de l\'envoi de la demande. Veuillez réessayer.', 'error');
+        console.error('Erreur:', error);
+        
+        // Ajouter un message d'erreur
+        addBotMessage('Désolé, une erreur s\'est produite lors de l\'envoi de votre demande. Veuillez réessayer.');
+      } finally {
+        // Réactiver le bouton
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer la demande';
+      }
+    });
+
+    // Afficher le formulaire directement au chargement du chat
+    document.addEventListener('DOMContentLoaded', function() {
+      // Le formulaire est maintenant visible par défaut dans le HTML
+      // On le cache initialement
+      chatForm.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
